@@ -18,8 +18,18 @@ public class AlbumServiceImpl implements AlbumService{
     }
 
     @Override
+    public Album delete(int id) {
+        return null;
+    }
+
+    @Override
     public List<Album> findAll() {
         return albumRepository.findAll();
+    }
+
+    @Override
+    public Album update(Album album) {
+        return null;
     }
 
     @Override
