@@ -1,6 +1,7 @@
 package com.library.search.model;
 
 import lombok.*;
+import org.springframework.data.relational.core.sql.In;
 
 import javax.persistence.*;
 
@@ -13,11 +14,10 @@ import javax.persistence.*;
 public class Album {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id ;
 
     private String name;
-    private String title;
     private String artist;
     private String gender;
     private Integer price;

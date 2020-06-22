@@ -1,20 +1,26 @@
 package com.library.search.controller;
 
+import com.library.search.model.Album;
 import com.library.search.service.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 @RestController
 @RequestMapping(value="/lib")
 public class AlbumController {
 
-//    @Autowired
-//    private AlbumService albumService;
+    @Autowired
+    private AlbumService albumService;
 
     @PostMapping("/import")
-    public String response() {
+    @ResponseBody
+    public String addCsv() {
         System.out.println("import");
+        albumService.AlbumCreate();
         return "import";
     }
 

@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @Service
 public interface AlbumService {
-    public Album create(Album album);
+    public void AlbumCreate();
     public Album delete(int id);
     public List<Album> findAll();
     public Album update(Album album);
