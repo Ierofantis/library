@@ -24,21 +24,31 @@ public class AlbumServiceImpl implements AlbumService{
         try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/albums.csv"))) {
 
             while ((line = br.readLine())!=null) {
-                //System.out.println(br.readLine());
                 String[] data = line.split(",");
-                System.out.println(data[1]);
+                int price = ConvertIntoNumeric(data[4]);
+
                 Album album = new Album();
-                //album.setId(Integer.valueOf(data[0]));
-               album.setName(data[1]);
-//                album.setArtist(data[2]);
-//                album.setGender(data[3]);
-               // album.setPrice(Integer.valueOf(data[4]));
+                album.setName(data[1]);
+                album.setArtist(data[2]);
+                album.setGender(data[3]);
+                album.setPrice(price);
 
                 albumRepository.save(album);
             }
-//            return result;
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private int ConvertIntoNumeric(String xVal)
+    {
+        try
+        {
+            return Integer.parseInt(xVal);
+        }
+        catch(Exception ex)
+        {
+            return 0;
         }
     }
 

@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Album {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id ;
 
     private String name;
