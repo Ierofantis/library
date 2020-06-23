@@ -3,11 +3,12 @@ package com.library.search.controller;
 import com.library.search.model.Album;
 import com.library.search.service.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import javax.swing.text.html.Option;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value="/lib")
@@ -21,12 +22,18 @@ public class AlbumController {
     public String addCsv() {
         System.out.println("import");
         albumService.AlbumCreate();
-        return "import";
+        return "csv imported";
+    }
+
+    @GetMapping("/view/all")
+    public List<Album> view(){
+        System.out.println("view");
+        return albumService.findAll();
     }
 
     @GetMapping("/view")
-    public String view(){
-        System.out.println("view");
-        return "view";
+    @ResponseBody
+    public  Optional<List<Album>> getFoos(@RequestParam String artist) {
+        return albumService.findByArtist(artist);
     }
 }

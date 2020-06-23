@@ -3,10 +3,10 @@ package com.library.search.service;
 import com.library.search.model.Album;
 import com.library.search.repository.AlbumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
@@ -72,4 +72,16 @@ public class AlbumServiceImpl implements AlbumService{
         Optional<Album> opt = albumRepository.findById(id);
         return opt;
     }
+
+    @Override
+    public Optional<List<Album>> findByArtist(String param) {
+        Optional<List<Album>> opt = albumRepository.findByArtist(param);
+        return opt;
+    }
+
+    @Override
+    public Streamable<Album> findByArtistContaining(String artist) {
+        return null;
+    }
+
 }

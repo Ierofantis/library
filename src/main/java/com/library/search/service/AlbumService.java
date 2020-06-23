@@ -1,6 +1,7 @@
 package com.library.search.service;
 
 import com.library.search.model.Album;
+import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,4 +14,6 @@ public interface AlbumService {
     public List<Album> findAll();
     public Album update(Album album);
     public Optional<Album> findById(int id);
+    public Optional<List<Album>> findByArtist(String artist);
+    Streamable<Album> findByArtistContaining(String artist);
 }
