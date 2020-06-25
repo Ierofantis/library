@@ -73,9 +73,14 @@ public class AlbumServiceImpl implements AlbumService{
         return opt;
     }
 
+//    @Override
+//    public Optional<List<Album>> findByArtist(String artist, String name) {
+//        return Optional.empty();
+//    }
+
     @Override
-    public Optional<List<Album>> findByArtist(String param) {
-        Optional<List<Album>> opt = albumRepository.findByArtist(param);
+    public Optional<List<Album>> findByArtistOrName(String artist,String name) {
+        Optional<List<Album>> opt = albumRepository.findByArtistOrName(artist,name);
         return opt;
     }
 
@@ -83,5 +88,4 @@ public class AlbumServiceImpl implements AlbumService{
     public Streamable<Album> findByArtistContaining(String artist) {
         return null;
     }
-
 }

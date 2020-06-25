@@ -14,6 +14,6 @@ public interface AlbumService {
     public List<Album> findAll();
     public Album update(Album album);
     public Optional<Album> findById(int id);
-    public Optional<List<Album>> findByArtist(String artist);
+    public Optional<List<Album>> findByArtistOrName(String artist,String name);
     Streamable<Album> findByArtistContaining(String artist);
 }

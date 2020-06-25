@@ -33,7 +33,9 @@ public class AlbumController {
 
     @GetMapping("/view")
     @ResponseBody
-    public  Optional<List<Album>> getFoos(@RequestParam String artist) {
-        return albumService.findByArtist(artist);
+    public  Optional<List<Album>> getData(@RequestParam String artist, @RequestParam String name ) {
+        System.out.println(artist);
+        System.out.println(name);
+        return albumService.findByArtistOrName(artist,name);
     }
 }
