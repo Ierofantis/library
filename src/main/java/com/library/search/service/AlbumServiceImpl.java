@@ -3,6 +3,9 @@ package com.library.search.service;
 import com.library.search.model.Album;
 import com.library.search.repository.AlbumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Component;
@@ -10,6 +13,7 @@ import org.springframework.stereotype.Component;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,11 +62,24 @@ public class AlbumServiceImpl implements AlbumService{
         return null;
     }
 
-    @Override
-    public List<Album> findAll() {
-        return albumRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
-    }
+//    @Override
+//    public List<Album> findAll() {
+//        return albumRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
+//    }
 
+    @Override
+    public List<Album> findAll(Integer pageNo, Integer pageSize, String sortBy)
+    {
+        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+
+        Page<Album> pagedResult = albumRepository.findAll(paging);
+
+        if(pagedResult.hasContent()) {
+            return pagedResult.getContent();
+        } else {
+            return new ArrayList<Album>();
+        }
+    }
     @Override
     public Album update(Album album) {
         return null;

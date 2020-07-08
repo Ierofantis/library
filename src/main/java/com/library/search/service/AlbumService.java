@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface AlbumService {
     public void AlbumCreate();
     public Album delete(int id);
-    public List<Album> findAll();
+    public List<Album> findAll(Integer pageNo, Integer pageSize, String sortBy);
     public Album update(Album album);
     public Optional<Album> findById(int id);
     public Optional<List<Album>> findByArtistOrName(String artist,String name);
