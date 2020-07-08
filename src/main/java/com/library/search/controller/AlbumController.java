@@ -1,5 +1,6 @@
 package com.library.search.controller;
 
+import com.library.search.dto.AlbumResponse;
 import com.library.search.model.Album;
 import com.library.search.service.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,18 +28,18 @@ public class AlbumController {
         albumService.AlbumCreate();
         return "csv imported";
     }
-    
+
     //?pageSize=5&pageNo=1&sortBy=name
     @GetMapping("/view/all")
-    public ResponseEntity<List<Album>> view(
+    public ResponseEntity<AlbumResponse> view(
             @RequestParam(defaultValue = "0") Integer pageNo,
             @RequestParam(defaultValue = "10") Integer pageSize,
             @RequestParam(defaultValue = "id") String sortBy){
-        System.out.println("view");
 
+        AlbumResponse response = new AlbumResponse();
         List<Album> list = albumService.findAll(pageNo, pageSize, sortBy);
-
-        return new ResponseEntity<List<Album>>(list, new HttpHeaders(), HttpStatus.OK);
+        response.setData(list);
+        return new ResponseEntity<AlbumResponse>(response, new HttpHeaders(), HttpStatus.OK);
     }
 
     @GetMapping("/view")
