@@ -1,6 +1,7 @@
 package com.library.search.controller;
 
 import com.library.search.dto.AlbumResponse;
+import com.library.search.dto.AlbumValues;
 import com.library.search.model.Album;
 import com.library.search.service.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value="/lib")
@@ -37,7 +39,14 @@ public class AlbumController {
             @RequestParam(defaultValue = "id") String sortBy){
 
         AlbumResponse response = new AlbumResponse();
-        List<Album> list = albumService.findAll(pageNo, pageSize, sortBy);
+        List<AlbumValues> list = albumService.findAll(pageNo, pageSize, sortBy).stream().map(e -> {
+            AlbumValues dto = new AlbumValues();
+            dto.setName(e.getName());
+            dto.setArtist(e.getArtist());
+            dto.setGender(e.getGender());
+            dto.setPrice(e.getPrice());
+            return dto;
+        }).collect(Collectors.toList());
         response.setData(list);
         return new ResponseEntity<AlbumResponse>(response, new HttpHeaders(), HttpStatus.OK);
     }

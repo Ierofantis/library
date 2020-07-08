@@ -1,18 +1,16 @@
 package com.library.search.dto;
 
-import com.library.search.model.Album;
-
 import java.util.List;
 
 public class AlbumResponse {
 
-        private List<Album> data;
+        private List<AlbumValues> data;
 
-        public List<Album> getData() {
+        public List<AlbumValues> getData() {
             return data;
         }
 
-        public void setData(List<Album> data) {
+        public void setData(List<AlbumValues> data) {
             this.data = data;
         }
 
