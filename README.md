@@ -2,5 +2,10 @@
 List of books/magazines and video/audio material
 
 
-After you run the migration file maybe you have to run this command
-`CREATE SEQUENCE hibernate_sequence START 1;`
+Import CSV to DB
+Fetch results:
+sorted,
+paginated,
+all,
+etc.
+
