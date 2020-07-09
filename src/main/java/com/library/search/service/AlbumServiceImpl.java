@@ -62,11 +62,6 @@ public class AlbumServiceImpl implements AlbumService{
         return null;
     }
 
-//    @Override
-//    public List<Album> findAll() {
-//        return albumRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
-//    }
-
     @Override
     public List<Album> findAll(Integer pageNo, Integer pageSize, String sortBy)
     {
@@ -90,11 +85,6 @@ public class AlbumServiceImpl implements AlbumService{
         Optional<Album> opt = albumRepository.findById(id);
         return opt;
     }
-
-//    @Override
-//    public Optional<List<Album>> findByArtist(String artist, String name) {
-//        return Optional.empty();
-//    }
 
     @Override
     public Optional<List<Album>> findByArtistOrName(String artist,String name) {

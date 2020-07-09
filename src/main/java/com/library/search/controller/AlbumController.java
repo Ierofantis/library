@@ -31,7 +31,6 @@ public class AlbumController {
         return "csv imported";
     }
 
-    //?pageSize=5&pageNo=1&sortBy=name
     @GetMapping("/view/all")
     public ResponseEntity<AlbumResponse> view(
             @RequestParam(defaultValue = "0") Integer pageNo,
@@ -51,6 +50,7 @@ public class AlbumController {
         return new ResponseEntity<AlbumResponse>(response, new HttpHeaders(), HttpStatus.OK);
     }
 
+    //?pageSize=5&pageNo=1&sortBy=name
     @GetMapping("/view")
     @ResponseBody
     public  Optional<List<Album>> getData(@RequestParam String artist, @RequestParam(required = false) String name ) {
